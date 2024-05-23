@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <ImageView
+    android:id="@+id/imageView"
+    android:layout_width="370dp"
+    android:layout_height="370dp"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="10dp" />
+
+  <TextView
+    android:id="@+id/classifiedText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/imageView"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="10dp"
+    android:text="Classified as:"
+    android:textSize="20sp"
+    android:textStyle="bold" />
+
+  <TextView
+    android:id="@+id/resultText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/classifiedText"
+    android:layout_centerHorizontal="true"
+    android:textColor="#C30000"
+    android:textSize="27sp"
+    android:textStyle="bold" />
+
+  <TextView
+    android:id="@+id/confidencesText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/resultText"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="30dp"
+    android:text="Confidences:"
+    android:textSize="20sp"
+    android:textStyle="bold" />
+
+  <TextView
+    android:id="@+id/confidenceText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/confidencesText"
+    android:layout_centerHorizontal="true"
+    android:textColor="#000000"
+    android:textSize="22sp" />
+
+  <Button
+    android:id="@+id/takePictureButton"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/holo_red_dark"
+    android:text="Take Picture"
+    android:textAllCaps="false"
+    android:textColor="@android:color/white"
+    android:textSize="21sp"
+    android:textStyle="bold"
+    android:layout_above="@+id/tabHostContainer" />
+
+  <include
+    android:id="@+id/tabHostContainer"
+    layout="@layout/tabhost"
+    android:layout_width="match_parent"
+    android:layout_alignParentBottom="true"
+    android:layout_height="wrap_content"/>
+
+</RelativeLayout>

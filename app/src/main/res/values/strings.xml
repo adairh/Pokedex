@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Designed and developed by 2022 skydoves (Jaewoong Eum)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<resources>
+  <string name="app_name">Pokedex</string>
+  <string name="weight">Weight</string>
+  <string name="height">Height</string>
+  <string name="base_stats">Base Stats</string>
+  <string name="hp">HP</string>
+  <string name="atk">ATK</string>
+  <string name="def">DEF</string>
+  <string name="spd">SPD</string>
+  <string name="exp">EXP</string>
+  <string name="detected_items" translatable="false">Detected Pokémon</string>
+  <string name="settings" translatable="false">Settings</string>
+  <string name="title_activity_settings" translatable="false">Settings</string>
+  <string name="intro_1_title" translatable="false">Gotta catch \'em all!</string>
+  <string name="intro_1_desc" translatable="false">This is an experiment that uses state of the art Machine Learning algorithms to identify Pokémon in the provided Image.</string>
+  <string name="login_desc" translatable="false">Login for the best experience and the ability to improve the app with personalized feedback.</string>
+  <string name="logout_text" translatable="false">Do you wish to log out?</string>
+  <string name="login_text" translatable="false">Do you wish to log in?</string>
+  <string name="logout_message" translatable="false">Login to provide feedback and improve the app</string>
+  <string name="yes" translatable="false">Yes</string>
+  <string name="no" translatable="false">No</string>
+  <string name="feedback_notification" translatable="false">Notification for processing the feedback</string>
+  <string name="sending_feedback" translatable="false">Sending Feedback</string>
+  <string name="feedback_in_progress" translatable="false">Feedback in progress</string>
+  <string name="thanks_for_feedback" translatable="false">Thank you for the feedback!</string>
+  <string name="feedback_failed" translatable="false">Failed to submit, please retry</string>
+  <string name="purchase_success" translatable="false">You\'re awesome and you know it!</string>
+  <string name="capture" translatable="false">Tap to Capture!</string>
+  <string name="capture_message" translatable="false">For best results, keep the object within the frame</string>
+  <string name="sign_in_error" translatable="false">Sign in failed, please check your network connection</string>
+  <string name="no_network" translatable="false">No network connection, please retry later</string>
+  <string name="confidences">Confidences:</string>
+  <string name="classified_as">Classified as:</string>
+  <string name="take_picture">Take Picture</string>
+</resources>
