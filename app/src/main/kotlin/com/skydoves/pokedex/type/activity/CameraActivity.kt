@@ -7,6 +7,13 @@ import android.graphics.Bitmap
 import android.media.ThumbnailUtils
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.TextPaint
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -14,11 +21,24 @@ import android.widget.TabHost
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.skydoves.pokedex.R
+import com.skydoves.pokedex.core.model.Pokemon
+import com.skydoves.pokedex.databinding.ItemPokemonBinding
 import com.skydoves.pokedex.ml.Pokedex91
+import com.skydoves.pokedex.ui.details.DetailActivity
+import com.skydoves.pokedex.ui.details.PKMDActivity
 import com.skydoves.pokedex.utils.TabHostUtils
+import com.skydoves.transformationlayout.TransformationLayout
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
+import org.json.JSONObject
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.IOException
+import java.net.HttpURLConnection
+import java.net.URL
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import kotlin.math.min
@@ -35,6 +55,8 @@ class CameraActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.camera_preview)
+
+
 
     val tabHost = findViewById<TabHost>(R.id.tabHost)
     TabHostUtils.setupTabHost(this, tabHost, 1)
@@ -55,6 +77,7 @@ class CameraActivity : AppCompatActivity() {
       }
     })
   }
+
 
   fun classifyImage(image: Bitmap) {
     try {
@@ -114,14 +137,25 @@ class CameraActivity : AppCompatActivity() {
         "Tangela", "Tauros", "Tentacool", "Tentacruel", "Vaporeon", "Venomoth", "Venonat", "Venusaur", "Victreebel",
         "Vileplume", "Voltorb", "Vulpix", "Wartortle", "Weedle", "Weepinbell", "Weezing", "Wigglytuff", "Zapdos", "Zubat"
       )
-      result!!.text = classes[maxPos]
+      //result!!.text = classes[maxPos]
+
+      val r = classes[maxPos];
+
+      val spannableString = SpannableString(r)
+      val clickableSpan = ConfidenceClickableSpan(r)
+      spannableString.setSpan(clickableSpan, 0, r.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+      result!!.movementMethod = LinkMovementMethod.getInstance()
+      result!!.text = spannableString
 
       var s = ""
       var i = maxPos
       //for (i in classes.indices) {
         s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100)
       //}
-      confidence!!.text = s
+
+
+
+        confidence!!.text = s
 
 
       // Releases model resources if no longer used.
@@ -145,4 +179,58 @@ class CameraActivity : AppCompatActivity() {
     }
     super.onActivityResult(requestCode, resultCode, data)
   }
+  private inner class ConfidenceClickableSpan(private val name: String) : ClickableSpan() {
+    override fun onClick(widget: View) {
+
+
+      println("CameraActivity $name")
+
+      //BindingHolder.holder?.let { DetailActivity.startActivity(it.transformationLayout, Pokemon(7, "mewtwo", "https://pokeapi.co/api/v2/pokemon/150/")) }
+      val lowerName = name.lowercase()
+
+      runBlocking {
+
+        val pokemonId = getPokemonId(lowerName)
+        println("Pokemon ID: $pokemonId") // Output: Pokemon ID: 150
+
+        //PKMDActivity.startActivity(this@CameraActivity, Pokemon(0, lowerName, "https://pokeapi.co/api/v2/pokemon/$lowerName/"))
+        PKMDActivity.startActivity(this@CameraActivity, Pokemon(0, lowerName, "https://pokeapi.co/api/v2/pokemon/$pokemonId/"))
+        //this@CameraActivity.startActivity(Intent(this@CameraActivity, DetailActivity::class.java))
+
+      }
+    }
+
+
+
+
+    override fun updateDrawState(ds: TextPaint) {
+      super.updateDrawState(ds)
+      ds.isUnderlineText = true // Underline the text
+    }
+  }
+
+
+  suspend fun getPokemonId(pokemonName: String): Int? = withContext(Dispatchers.IO) {
+    try {
+      val url = URL("https://pokeapi.co/api/v2/pokemon/$pokemonName")
+      val connection = url.openConnection() as HttpURLConnection
+      connection.requestMethod = "GET"
+
+      val responseCode = connection.responseCode
+      if (responseCode == HttpURLConnection.HTTP_OK) {
+        val inputStream = connection.inputStream
+        val jsonString = inputStream.bufferedReader().use { it.readText() }
+        val jsonObject = JSONObject(jsonString)
+        jsonObject.getInt("id")
+      } else {
+        println("Error: $responseCode")
+        null
+      }
+    } catch (e: Exception) {
+      println("Exception: ${e.message}")
+      null
+    }
+  }
+
+
 }
