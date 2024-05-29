@@ -8,6 +8,7 @@ import com.skydoves.pokedex.type.ElementActivity
 import com.skydoves.pokedex.type.TypeDetailsActivity
 import com.skydoves.pokedex.type.activity.CameraActivity
 import com.skydoves.pokedex.ui.main.MainActivity
+import com.skydoves.pokedex.upgrader.UpgrActivity
 
 object TabHostUtils {
   fun setupTabHost(context: Context, tabHost: TabHost, current: Int) {
@@ -43,7 +44,7 @@ object TabHostUtils {
         }
         "Elements" -> {
           // Start ElementActivity
-          context.startActivity(Intent(context, ElementActivity::class.java))
+          context.startActivity(Intent(context, UpgrActivity::class.java))
         }
       }
     }

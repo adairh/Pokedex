@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="dev.marcosfarias.pokedex.ui.home.HomeFragment"
+        android:name="com.skydoves.pokedex.upgrader.ui.home.HomeFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_home" >
         <action
@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/navigation_pokedex"
-        android:name="dev.marcosfarias.pokedex.ui.pokedex.PokedexFragment"
+        android:name="com.skydoves.pokedex.upgrader.ui.pokedex.PokedexFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_pokedex" >
         <action
@@ -34,43 +34,43 @@
 
     <fragment
         android:id="@+id/navigation_news_detail"
-        android:name="dev.marcosfarias.pokedex.ui.newsdetail.NewsDetailFragment"
+        android:name="com.skydoves.pokedex.upgrader.ui.newsdetail.NewsDetailFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_news_detail" />
 
     <fragment
         android:id="@+id/navigation_generation"
-        android:name="dev.marcosfarias.pokedex.ui.generation.GenerationFragment"
+        android:name="com.skydoves.pokedex.upgrader.ui.generation.GenerationFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_generation" />
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="dev.marcosfarias.pokedex.ui.search.SearchFragment"
+        android:name="com.skydoves.pokedex.upgrader.ui.search.SearchFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="dev.marcosfarias.pokedex.ui.dashboard.DashboardFragment"
+        android:name="com.skydoves.pokedex.upgrader.ui.dashboard.DashboardFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_about"
-        android:name="dev.marcosfarias.pokedex.ui.dashboard.about.AboutFragment"
+        android:name="com.skydoves.pokedex.upgrader.ui.dashboard.about.AboutFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_about" />
 
     <fragment
         android:id="@+id/navigation_moves"
-        android:name="dev.marcosfarias.pokedex.ui.dashboard.moves.MovesFragment"
+        android:name="com.skydoves.pokedex.upgrader.ui.dashboard.moves.MovesFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_moves" />
 
     <fragment
         android:id="@+id/navigation_evolution"
-        android:name="dev.marcosfarias.pokedex.ui.dashboard.evolution.EvolutionFragment"
+        android:name="com.skydoves.pokedex.upgrader.ui.dashboard.evolution.EvolutionFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_evolution" />
 

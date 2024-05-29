@@ -50,6 +50,8 @@
 
     <activity
       android:name=".type.ElementActivity"/>
+    <activity
+      android:name=".upgrader.UpgrActivity"/>
 
 
     <activity

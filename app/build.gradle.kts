@@ -1,18 +1,3 @@
-/*
- * Designed and developed by 2022 skydoves (Jaewoong Eum)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 import com.android.build.gradle.internal.tasks.databinding.DataBindingGenBaseClassesTask
 import com.skydoves.pokedex.Configuration
 import org.gradle.configurationcache.extensions.capitalized
@@ -40,6 +25,7 @@ android {
   buildFeatures {
     mlModelBinding = true
     dataBinding = true
+    viewBinding = true
     buildConfig = true
   }
 
@@ -175,4 +161,24 @@ dependencies {
   implementation("androidx.camera:camera-lifecycle:1.2.2")
   implementation("androidx.camera:camera-view:1.2.2")
 
+
+  // Persistence
+  implementation("androidx.room:room-runtime:2.5.0")
+  kapt("androidx.room:room-compiler:2.5.0")
+
+  // Koin
+  implementation("io.insert-koin:koin-android:3.2.0")
+  implementation("io.insert-koin:koin-core:3.2.0")
+
+
+  // Retrofit
+  implementation("com.squareup.retrofit2:retrofit:2.9.0")
+  implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+  // Glide
+  ksp("com.github.bumptech.glide:ksp:4.13.2")
+  implementation("com.github.bumptech.glide:glide:4.13.2")
+
+  // Third Party
+  implementation("com.leinardi.android:speed-dial:3.3.0")
 }
