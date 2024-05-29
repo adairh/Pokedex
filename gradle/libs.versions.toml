@@ -51,6 +51,7 @@ tensorflowLiteSupport = "0.1.0"
 tensorflowLiteMetadata = "0.1.0"
 tensorflowLiteGpu = "2.3.0"
 benchmarkCommon = "1.2.4"
+navigationFragment = "2.7.7"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -119,3 +120,4 @@ tensorflow-lite-support = { group = "org.tensorflow", name = "tensorflow-lite-su
 tensorflow-lite-metadata = { group = "org.tensorflow", name = "tensorflow-lite-metadata", version.ref = "tensorflowLiteMetadata" }
 tensorflow-lite-gpu = { group = "org.tensorflow", name = "tensorflow-lite-gpu", version.ref = "tensorflowLiteGpu" }
 androidx-benchmark-common = { group = "androidx.benchmark", name = "benchmark-common", version.ref = "benchmarkCommon" }
+androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }

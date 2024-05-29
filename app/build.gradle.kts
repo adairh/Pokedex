@@ -98,6 +98,7 @@ dependencies {
   implementation(libs.tensorflow.lite.metadata)
   implementation(libs.tensorflow.lite.gpu)
     implementation(libs.androidx.benchmark.common)
+    implementation(libs.androidx.navigation.fragment)
 
     // modules for unit test
   testImplementation(project(":core-network"))
