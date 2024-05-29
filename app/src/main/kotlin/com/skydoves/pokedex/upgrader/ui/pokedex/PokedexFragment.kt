@@ -53,7 +53,7 @@ class PokedexFragment : Fragment() {
                     selectedPokemonId = pokemon.id
 
                     val extras = FragmentNavigatorExtras(
-                        viewHolder.itemView to viewHolder.viewBinding.imageView.transitionName
+                        //viewHolder.itemView to viewHolder.viewBinding.imageView.transitionName
                     )
 
                     val bundle = bundleOf(
@@ -80,7 +80,7 @@ class PokedexFragment : Fragment() {
         })
 
         val speedDialView = viewBinding?.speedDial
-        speedDialView?.inflate(R.menu.menu_pokedex)
+        /*speedDialView?.inflate(R.menu.menu_pokedex)
         speedDialView?.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
             when (actionItem.id) {
                 R.id.menuAllGen -> {
@@ -98,7 +98,7 @@ class PokedexFragment : Fragment() {
                     return@OnActionSelectedListener true
                 }
             }
-        })
+        })*/
     }
 
     private fun showAllGen() {

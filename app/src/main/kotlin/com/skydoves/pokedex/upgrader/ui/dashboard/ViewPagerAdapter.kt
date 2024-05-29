@@ -8,7 +8,7 @@ import com.skydoves.pokedex.R
 import com.skydoves.pokedex.upgrader.ui.dashboard.about.AboutFragment
 import com.skydoves.pokedex.upgrader.ui.dashboard.evolution.EvolutionFragment
 import com.skydoves.pokedex.upgrader.ui.dashboard.moves.MovesFragment
-import dev.marcosfarias.pokedex.ui.dashboard.stats.StatsFragment
+import com.skydoves.pokedex.upgrader.ui.dashboard.stats.StatsFragment
 
 class ViewPagerAdapter(
     supportFragmentManager: FragmentManager,

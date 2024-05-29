@@ -175,9 +175,6 @@ dependencies {
   implementation("com.squareup.retrofit2:retrofit:2.9.0")
   implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-  // Glide
-  ksp("com.github.bumptech.glide:ksp:4.13.2")
-  implementation("com.github.bumptech.glide:glide:4.13.2")
 
   // Third Party
   implementation("com.leinardi.android:speed-dial:3.3.0")

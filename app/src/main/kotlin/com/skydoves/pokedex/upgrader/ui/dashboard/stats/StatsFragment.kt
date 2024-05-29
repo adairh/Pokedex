@@ -1,4 +1,4 @@
-package dev.marcosfarias.pokedex.ui.dashboard.stats
+package com.skydoves.pokedex.upgrader.ui.dashboard.stats
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import dev.marcosfarias.pokedex.R
-import dev.marcosfarias.pokedex.databinding.FragmentStatsBinding
+import com.skydoves.pokedex.R
+import com.skydoves.pokedex.databinding.FragmentStatsBinding
 import com.skydoves.pokedex.upgrader.ui.dashboard.DashboardViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
