@@ -27,9 +27,6 @@ class MenuAdapter(
             viewBinding.relativeLayoutBackground.background.colorFilter =
                 PorterDuffColorFilter(color, PorterDuff.Mode.SRC_ATOP)
 
-            itemView.setOnClickListener {
-                it.findNavController().navigate(R.id.action_navigation_home_to_navigation_pokedex)
-            }
         }
     }
 

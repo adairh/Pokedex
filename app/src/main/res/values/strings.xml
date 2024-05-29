@@ -56,8 +56,8 @@
   <string name="generation_item_8">Generation VIII</string>
   <string name="pokemon_news">Pokémon News</string>
   <string name="view_all">View All</string>
-  <string name="main_title">What Pokémon\nare you looking for?</string>
-  <string name="main_search">Search Pokemon, Move, Ability, etc</string>
+  <string name="main_title">What are you looking for?</string>
+  <string name="main_search">Search articles you are interested in</string>
   <string name="news_title">Pokémon Rumble Rush Arrives Soon</string>
   <string name="news_date">15 May 2019</string>
   <string name="lorem_small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in nisi at turpis.</string>

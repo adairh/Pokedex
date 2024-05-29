@@ -152,6 +152,7 @@ dependencies {
   implementation("androidx.vectordrawable:vectordrawable:1.2.0")
   implementation("com.google.android.material:material:1.1.0-alpha02")
   implementation("androidx.cardview:cardview:1.0.0")
+
   //Other third party libs
   implementation("com.otaliastudios:cameraview:2.7.2")
   implementation("com.otaliastudios:cameraview:2.0.0-rcl")
@@ -178,4 +179,9 @@ dependencies {
 
   // Third Party
   implementation("com.leinardi.android:speed-dial:3.3.0")
+
+  implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
+  implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
+
+
 }

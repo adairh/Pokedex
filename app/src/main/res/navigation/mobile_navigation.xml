@@ -5,40 +5,25 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.skydoves.pokedex.upgrader.ui.home.HomeFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_pokedex"
-            app:destination="@id/navigation_pokedex" />
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_news_detail"
-            app:destination="@id/navigation_news_detail" />
-    </fragment>
+  <fragment
+    android:id="@+id/navigation_home"
+    android:name="com.skydoves.pokedex.upgrader.ui.home.HomeFragment"
+    android:label="@string/app_name"
+    tools:layout="@layout/fragment_home">
+    <action
+      android:id="@+id/action_navigation_home_to_navigation_search"
+      app:destination="@id/navigation_search" />
+    <action
+      android:id="@+id/action_navigation_home_to_navigation_news_detail"
+      app:destination="@id/navigation_news_detail" />
+  </fragment>
 
-    <fragment
-        android:id="@+id/navigation_pokedex"
-        android:name="com.skydoves.pokedex.upgrader.ui.pokedex.PokedexFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_pokedex" >
-        <action
-            android:id="@+id/action_navigation_pokedex_to_navigation_dashboard"
-            app:destination="@id/navigation_dashboard" />
-    </fragment>
-
-    <fragment
+  <fragment
         android:id="@+id/navigation_news_detail"
         android:name="com.skydoves.pokedex.upgrader.ui.newsdetail.NewsDetailFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_news_detail" />
 
-    <fragment
-        android:id="@+id/navigation_generation"
-        android:name="com.skydoves.pokedex.upgrader.ui.generation.GenerationFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_generation" />
 
     <fragment
         android:id="@+id/navigation_search"
@@ -46,35 +31,7 @@
         android:label="@string/app_name"
         tools:layout="@layout/fragment_search" />
 
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.skydoves.pokedex.upgrader.ui.dashboard.DashboardFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_dashboard" />
 
-    <fragment
-        android:id="@+id/navigation_about"
-        android:name="com.skydoves.pokedex.upgrader.ui.dashboard.about.AboutFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_about" />
-
-    <fragment
-        android:id="@+id/navigation_moves"
-        android:name="com.skydoves.pokedex.upgrader.ui.dashboard.moves.MovesFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_moves" />
-
-    <fragment
-        android:id="@+id/navigation_evolution"
-        android:name="com.skydoves.pokedex.upgrader.ui.dashboard.evolution.EvolutionFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_evolution" />
-
-    <fragment
-        android:id="@+id/navigation_stats"
-        android:name="com.skydoves.pokedex.upgrader.ui.dashboard.stats.StatsFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_stats" />
 
 
 </navigation>

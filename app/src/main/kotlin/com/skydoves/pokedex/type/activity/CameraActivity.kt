@@ -12,8 +12,6 @@ import android.text.Spanned
 import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -22,15 +20,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.skydoves.pokedex.R
 import com.skydoves.pokedex.core.model.Pokemon
-import com.skydoves.pokedex.databinding.ItemPokemonBinding
 import com.skydoves.pokedex.ml.Pokedex91
-import com.skydoves.pokedex.ui.details.DetailActivity
 import com.skydoves.pokedex.ui.details.PKMDActivity
 import com.skydoves.pokedex.utils.TabHostUtils
-import com.skydoves.transformationlayout.TransformationLayout
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
@@ -54,7 +47,7 @@ class CameraActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.camera_preview)
+    setContentView(R.layout.activity_camera)
 
 
 

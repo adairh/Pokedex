@@ -42,6 +42,12 @@
           android:layout_height="match_parent"
           android:orientation="vertical" />
 
+        <LinearLayout
+          android:id="@+id/news"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical" />
+
       </FrameLayout>
 
     </LinearLayout>
