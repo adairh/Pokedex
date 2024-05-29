@@ -49,4 +49,14 @@
   <color name="grass">#007C42</color>
   <color name="ground">#AD7235</color>
   <color name="md_blue_200">#0091EA</color>
+  <color name="backgroundLight">#F5F5F5</color>
+  <color name="indigo">#6C79DB</color>
+  <color name="lightBlue">#58ABF6</color>
+  <color name="lightBrown">#CA8179</color>
+  <color name="lighterGrey">#F4F5F4</color>
+  <color name="lightGrey">#F5F5F5</color>
+  <color name="lightPurple">#9F5BBA</color>
+  <color name="lightRed">#F7786B</color>
+  <color name="lightTeal">#2CDAB1</color>
+  <color name="lightYellow">#FFCE4B</color>
 </resources>
