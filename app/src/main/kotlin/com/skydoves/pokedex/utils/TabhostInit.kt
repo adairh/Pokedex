@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.widget.TabHost
 import com.skydoves.pokedex.R
+import com.skydoves.pokedex.type.ElementActivity
 import com.skydoves.pokedex.type.activity.CameraActivity
 import com.skydoves.pokedex.ui.main.MainActivity
 
@@ -39,9 +40,9 @@ object TabHostUtils {
           // Start ProfileActivity
           context.startActivity(Intent(context, CameraActivity::class.java))
         }
-        R.id.element.toString() -> {
+        "Elements" -> {
           // Start ElementActivity
-          // context.startActivity(Intent(context, ElementActivity::class.java))
+          context.startActivity(Intent(context, ElementActivity::class.java))
         }
       }
     }
