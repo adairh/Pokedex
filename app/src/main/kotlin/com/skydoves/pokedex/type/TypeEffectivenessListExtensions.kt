@@ -1,6 +1,8 @@
-package com.skydoves.pokedex.type.element.model
+package com.skydoves.pokedex.type
 
-val List<TypeEffectiveness>.types: List<Type> get() { return map { (type) -> type } }
+import com.skydoves.pokedex.TypeEffectiveness
+
+val List<TypeEffectiveness>.types: List<ElementData> get() { return map { (type) -> type } }
 
 fun List<TypeEffectiveness>.decreaseMultiplierOrRemoveIfContainsIn(
     other: List<TypeEffectiveness>

@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/type_details_activity"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/background"
+  android:orientation="vertical"
+  android:padding="16dp"
+  tools:context=".type.TypeDetailsActivity">
+
+  <TextView
+    android:id="@+id/type_details_header"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+  <TextView
+    android:id="@+id/type_details_subtitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:paddingBottom="16dp"
+    android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+  <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+      <include
+        android:id="@+id/very_weak_against_card"
+        layout="@layout/type_relations_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+      <include
+        android:id="@+id/weak_against_card"
+        layout="@layout/type_relations_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+      <include
+        android:id="@+id/resistant_against_card"
+        layout="@layout/type_relations_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+      <include
+        android:id="@+id/very_resistant_against_card"
+        layout="@layout/type_relations_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+      <include
+        android:id="@+id/immune_against_card"
+        layout="@layout/type_relations_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    </LinearLayout>
+  </ScrollView>
+</LinearLayout>

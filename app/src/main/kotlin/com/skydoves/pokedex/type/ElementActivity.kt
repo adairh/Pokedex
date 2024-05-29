@@ -1,6 +1,8 @@
 package com.skydoves.pokedex.type
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TabHost
 import android.widget.Toast
@@ -9,6 +11,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.pokedex.R
 import com.skydoves.pokedex.utils.TabHostUtils
+import com.skydoves.pokedex.utils.TypesInit.Companion.types
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import org.tensorflow.lite.DataType
 
 class ElementActivity : AppCompatActivity() {
 
@@ -27,35 +33,89 @@ class ElementActivity : AppCompatActivity() {
 
     val buttonViewDetail: Button = findViewById(R.id.buttonViewDetail)
     buttonViewDetail.setOnClickListener {
-      val selectedElements = adapter.selectedItems.joinToString { it.name }
-      Toast.makeText(this, "Selected Elements: $selectedElements", Toast.LENGTH_SHORT).show()
+      val selectedElements = adapter.selectedItems
+
+      if (selectedElements.size <= 0) {
+        Toast.makeText(this, "You have to select at least 1 items.", Toast.LENGTH_SHORT).show()
+      }
+      else {
+        val weakList = mutableListOf<String>()
+        val strongList = mutableListOf<String>()
+        val resistantList = mutableListOf<String>()
+        val vulnerableList = mutableListOf<String>()
+        val immuneList = mutableListOf<String>()
+
+        for (element in selectedElements) {
+          for (we in element.weak) {
+            weakList.add(we.name)
+          }
+
+          for (se in element.strong) {
+            strongList.add(se.name)
+          }
+
+          for (re in element.resistant) {
+            resistantList.add(re.type.name)
+          }
+
+          for (ve in element.vulnerable) {
+            vulnerableList.add(ve.type.name)
+          }
+
+          for (ie in element.immune) {
+            immuneList.add(ie.type.name)
+          }
+
+
+          /*println("WEAK")
+        for (we in element.weak)
+          println("Weak: " + we.name)
+
+        println("STRONG")
+        for (se in element.strong)
+          println("Strong: " + se.name)
+
+        println("RESISTANT")
+        for (re in element.resistant)
+          println("Resistant: " + re.type.name)
+
+
+        println("VULNERABLE")
+        for (ve in element.vulnerable)
+          println("Vulnerable: " + ve.type.name)
+
+        println("IMMUNE")
+        for (ve in element.immune)
+          println("Immune: " + ve.type.name)*/
+        }
+
+        val intent = Intent(this@ElementActivity, TypeDetailsActivity::class.java)
+        intent.putStringArrayListExtra("weakList", ArrayList(weakList))
+        intent.putStringArrayListExtra("strongList", ArrayList(strongList))
+        intent.putStringArrayListExtra("resistantList", ArrayList(resistantList))
+        intent.putStringArrayListExtra("vulnerableList", ArrayList(vulnerableList))
+        intent.putStringArrayListExtra("immuneList", ArrayList(immuneList))
+
+        val list = mutableListOf<String>()
+        for (i in selectedElements)
+          list.add(i.name)
+        intent.putStringArrayListExtra("Type", ArrayList(list))
+
+        startActivity(intent)
+      }
+
+      //Toast.makeText(this, "Additional operations performed.", Toast.LENGTH_SHORT).show()
     }
+
   }
 
-  private fun setupRecyclerView() {
-    val elementList = listOf(
-      ElementData(R.drawable.ic_type_normal, "Normal", R.color.gray_21),
-      ElementData(R.drawable.ic_type_fighting, "Fighting", R.color.fighting),
-      ElementData(R.drawable.ic_type_flying, "Flying", R.color.flying),
-      ElementData(R.drawable.ic_type_poison, "Poison", R.color.poison),
-      ElementData(R.drawable.ic_type_ground, "Ground", R.color.ground),
-      ElementData(R.drawable.ic_type_rock, "Rock", R.color.rock),
-      ElementData(R.drawable.ic_type_bug, "Bug", R.color.bug),
-      ElementData(R.drawable.ic_type_ghost, "Ghost", R.color.ghost),
-      ElementData(R.drawable.ic_type_steel, "Steel", R.color.steel),
-      ElementData(R.drawable.ic_type_fire, "Fire", R.color.fire),
-      ElementData(R.drawable.ic_type_water, "Water", R.color.water),
-      ElementData(R.drawable.ic_type_grass, "Grass", R.color.grass),
-      ElementData(R.drawable.ic_type_electric, "Electric", R.color.electric),
-      ElementData(R.drawable.ic_type_psychic, "Psychic", R.color.psychic),
-      ElementData(R.drawable.ic_type_ice, "Ice", R.color.ice),
-      ElementData(R.drawable.ic_type_dragon, "Dragon", R.color.dragon),
-      ElementData(R.drawable.ic_type_dark, "Dark", R.color.dark),
-      ElementData(R.drawable.ic_type_fairy, "Fairy", R.color.fairy)
-    )
 
-    adapter = ElementAdapter(elementList)
+  private fun setupRecyclerView() {
+
+
+    adapter = ElementAdapter(types)
     recyclerView.layoutManager = GridLayoutManager(this, 2)
     recyclerView.adapter = adapter
   }
+
 }

@@ -50,8 +50,14 @@
 
     <activity
       android:name=".type.ElementActivity"/>
+
+
+    <activity
+      android:name=".type.TypeDetailsActivity"/>
+
     <activity
       android:name=".type.activity.CameraActivity"/>
+
     <activity
       android:name=".ui.details.PKMDActivity"/>
 

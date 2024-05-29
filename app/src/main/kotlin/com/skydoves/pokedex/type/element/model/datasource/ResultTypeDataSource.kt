@@ -1,6 +1,6 @@
 package com.skydoves.pokedex.type.element.model.datasource
 
-import com.skydoves.pokedex.type.element.model.ResultType
+import com.skydoves.pokedex.ResultType
 import kotlinx.coroutines.flow.Flow
 
 interface ResultTypeDataSource {

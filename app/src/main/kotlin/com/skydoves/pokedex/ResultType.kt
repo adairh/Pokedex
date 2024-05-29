@@ -1,7 +1,11 @@
-package com.skydoves.pokedex.type.element.model
+package com.skydoves.pokedex
+
+import com.skydoves.pokedex.type.ElementData
+import com.skydoves.pokedex.type.newResistantListConsidering
+import com.skydoves.pokedex.type.newVulnerableListConsidering
 
 data class ResultType(
-  val types: List<Type> = emptyList(),
+  val types: List<ElementData> = emptyList(),
   val resistant: List<TypeEffectiveness> = emptyList(),
   val vulnerable: List<TypeEffectiveness> = emptyList(),
   val weak: List<TypeEffectiveness> = emptyList(),
@@ -23,7 +27,7 @@ data class ResultType(
         )
     }
 
-    operator fun plus(other: Type): ResultType {
+    operator fun plus(other: ElementData): ResultType {
         val otherResultType = other.asResultType()
         return if (types.isEmpty()) otherResultType else this + otherResultType
     }
