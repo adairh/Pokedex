@@ -7,6 +7,11 @@ import android.graphics.drawable.GradientDrawable
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.skydoves.pokedex.R
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.json.JSONObject
+import java.net.HttpURLConnection
+import java.net.URL
 
 fun createRoundedDrawable(context: Context, colorResId: Int, isSelected: Boolean): GradientDrawable {
   val drawable = GradientDrawable()
@@ -37,4 +42,26 @@ fun flipView(context: Context, front: View, back: View, showBack: Boolean) {
 
   flipOut.start()
   flipIn.start()
+}
+
+suspend fun getPokemonId(pokemonName: String): Int? = withContext(Dispatchers.IO) {
+  try {
+    val url = URL("https://pokeapi.co/api/v2/pokemon/$pokemonName")
+    val connection = url.openConnection() as HttpURLConnection
+    connection.requestMethod = "GET"
+
+    val responseCode = connection.responseCode
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+      val inputStream = connection.inputStream
+      val jsonString = inputStream.bufferedReader().use { it.readText() }
+      val jsonObject = JSONObject(jsonString)
+      jsonObject.getInt("id")
+    } else {
+      println("Error: $responseCode")
+      null
+    }
+  } catch (e: Exception) {
+    println("Exception: ${e.message}")
+    null
+  }
 }

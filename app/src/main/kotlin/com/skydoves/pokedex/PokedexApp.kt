@@ -4,8 +4,7 @@ import android.app.Application
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.firestore
-import com.skydoves.pokedex.upgrader.di.appComponent
-import com.skydoves.pokedex.utils.TypesInit
+import com.skydoves.pokedex.news.di.appComponent
 import dagger.hilt.android.HiltAndroidApp
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

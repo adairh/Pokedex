@@ -5,9 +5,9 @@ import android.content.Intent
 import android.widget.TabHost
 import com.skydoves.pokedex.R
 import com.skydoves.pokedex.type.ElementActivity
-import com.skydoves.pokedex.type.activity.CameraActivity
+import com.skydoves.pokedex.type.camera.CameraActivity
 import com.skydoves.pokedex.ui.main.MainActivity
-import com.skydoves.pokedex.upgrader.NewsActivity
+import com.skydoves.pokedex.news.NewsActivity
 
 object TabHostUtils {
   fun setupTabHost(context: Context, tabHost: TabHost, current: Int) {

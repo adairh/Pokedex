@@ -51,14 +51,14 @@
     <activity
       android:name=".type.ElementActivity"/>
     <activity
-      android:name=".upgrader.NewsActivity"/>
+      android:name=".news.NewsActivity"/>
 
 
     <activity
       android:name=".type.TypeDetailsActivity"/>
 
     <activity
-      android:name=".type.activity.CameraActivity"/>
+      android:name=".type.camera.CameraActivity"/>
 
     <activity
       android:name=".ui.details.PKMDActivity"/>

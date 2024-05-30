@@ -66,4 +66,5 @@
   <string name="dashboard_tab_2">Base Stats</string>
   <string name="dashboard_tab_3">Evolution</string>
   <string name="dashboard_tab_4">Moves</string>
+    <string name="search_for_a_pokemon">Search for a pokemon</string>
 </resources>
