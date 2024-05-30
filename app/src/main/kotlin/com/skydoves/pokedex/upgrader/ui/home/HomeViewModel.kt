@@ -3,6 +3,8 @@ package com.skydoves.pokedex.upgrader.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 import com.skydoves.pokedex.R
 import com.skydoves.pokedex.upgrader.model.Menu
 import com.skydoves.pokedex.upgrader.model.News
@@ -24,17 +26,22 @@ class HomeViewModel : ViewModel() {
         return listMenu
     }
 
-    fun getListNews(): LiveData<List<News>> {
-        listNews.value = listOf(
-            News(),
-            News(),
-            News(),
-            News(),
-            News(),
-            News(),
-            News(),
-            News()
-        )
-        return listNews
+  fun getListNews(): LiveData<List<News>> {
+
+    val db = Firebase.firestore
+    db.collection("news")
+      .get()
+      .addOnSuccessListener { documents ->
+        val newsList = mutableListOf<News>()
+        for (document in documents) {
+          val news = document.toObject(News::class.java)
+          newsList.add(news)
+        }
+        listNews.value = newsList
+      }
+      .addOnFailureListener { exception ->
+        // Handle any errors
+      }
+    return listNews
     }
 }

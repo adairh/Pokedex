@@ -10,6 +10,7 @@ plugins {
   alias(libs.plugins.ksp)
   alias(libs.plugins.kotlin.parcelize)
   alias(libs.plugins.hilt.plugin)
+  alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -85,8 +86,9 @@ dependencies {
   implementation(libs.tensorflow.lite.gpu)
     implementation(libs.androidx.benchmark.common)
     implementation(libs.androidx.navigation.fragment)
+  implementation(libs.firebase.firestore)
 
-    // modules for unit test
+  // modules for unit test
   testImplementation(project(":core-network"))
   testImplementation(project(":core-database"))
   testImplementation(project(":core-test"))
@@ -182,6 +184,7 @@ dependencies {
 
   implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
   implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
+
 
 
 }

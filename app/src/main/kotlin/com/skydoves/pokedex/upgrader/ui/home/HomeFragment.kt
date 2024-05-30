@@ -13,12 +13,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.skydoves.pokedex.R
 import com.skydoves.pokedex.databinding.FragmentHomeBinding
 import com.skydoves.pokedex.upgrader.model.News
+import com.skydoves.pokedex.upgrader.repository.SharedViewModel
 import com.skydoves.pokedex.upgrader.utils.PokemonColorUtil
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
   private val homeViewModel: HomeViewModel by viewModel()
+  private val sharedViewModel: SharedViewModel by sharedViewModel()
   private var viewBinding: FragmentHomeBinding? = null
 
   override fun onCreateView(
@@ -54,9 +57,8 @@ class HomeFragment : Fragment() {
       )
     )
 
-    homeViewModel.getListNews().observe(viewLifecycleOwner, Observer {
-      val items: List<News> = it
-      viewBinding?.recyclerViewNews?.adapter = NewsAdapter(items, view.context)
+    homeViewModel.getListNews().observe(viewLifecycleOwner, Observer { newsList ->
+      viewBinding?.recyclerViewNews?.adapter = NewsAdapter(newsList, view.context, sharedViewModel)
     })
   }
 

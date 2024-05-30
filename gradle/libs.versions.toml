@@ -52,6 +52,8 @@ tensorflowLiteMetadata = "0.1.0"
 tensorflowLiteGpu = "2.3.0"
 benchmarkCommon = "1.2.4"
 navigationFragment = "2.7.7"
+googleGmsGoogleServices = "4.4.1"
+firebaseFirestore = "25.0.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -63,6 +65,7 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 hilt-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 
 [libraries]
 material = { module = "com.google.android.material:material", version.ref = "material" }
@@ -121,3 +124,4 @@ tensorflow-lite-metadata = { group = "org.tensorflow", name = "tensorflow-lite-m
 tensorflow-lite-gpu = { group = "org.tensorflow", name = "tensorflow-lite-gpu", version.ref = "tensorflowLiteGpu" }
 androidx-benchmark-common = { group = "androidx.benchmark", name = "benchmark-common", version.ref = "benchmarkCommon" }
 androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }

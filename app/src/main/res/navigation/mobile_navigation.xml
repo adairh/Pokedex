@@ -19,13 +19,17 @@
   </fragment>
 
   <fragment
-        android:id="@+id/navigation_news_detail"
-        android:name="com.skydoves.pokedex.upgrader.ui.newsdetail.NewsDetailFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_news_detail" />
+    android:id="@+id/navigation_news_detail"
+    android:name="com.skydoves.pokedex.upgrader.ui.newsdetail.NewsDetailFragment"
+    android:label="@string/app_name"
+    tools:layout="@layout/fragment_news_detail">
+    <argument
+      android:name="news"
+      app:argType="com.skydoves.pokedex.upgrader.model.News" />
+  </fragment>
 
 
-    <fragment
+  <fragment
         android:id="@+id/navigation_search"
         android:name="com.skydoves.pokedex.upgrader.ui.search.SearchFragment"
         android:label="@string/app_name"
