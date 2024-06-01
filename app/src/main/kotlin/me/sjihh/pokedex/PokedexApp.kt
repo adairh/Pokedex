@@ -5,6 +5,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.firestore
 import dagger.hilt.android.HiltAndroidApp
+import me.sjihh.pokedex.news.di.appComponent
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -60,5 +61,6 @@ class PokedexApp : Application() {
    */
   private fun configureDI() = startKoin {
     androidContext(this@PokedexApp)
+    modules(appComponent)
   }
 }
