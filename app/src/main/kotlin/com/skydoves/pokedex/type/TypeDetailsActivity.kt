@@ -1,3 +1,6 @@
+/**
+ * An activity for displaying details about Pokémon types, including strengths and weaknesses.
+ */
 package com.skydoves.pokedex.type
 
 import android.graphics.drawable.GradientDrawable
@@ -11,6 +14,10 @@ import com.skydoves.pokedex.R
 import com.skydoves.pokedex.ui.createRoundedDrawable
 import com.skydoves.pokedex.utils.TypesInit.Companion.types
 
+/**
+ * A class representing an activity for displaying details about Pokémon types, including strengths and weaknesses.
+ * Coded by Nguyen Dang Khoa (ID: 21110045).
+ */
 class TypeDetailsActivity : AppCompatActivity() {
   private var weakList: List<String>? = null
   private var strongList: List<String>? = null
@@ -34,9 +41,12 @@ class TypeDetailsActivity : AppCompatActivity() {
     // Populate the views with the data
     populateViews()
   }
+
+  /**
+   * Populates the views with Pokémon type details.
+   */
   private fun populateViews() {
     // Update the header and subtitle
-
     var str = ""
     for (t in typess!!)
       str += ("$t ")
@@ -50,11 +60,15 @@ class TypeDetailsActivity : AppCompatActivity() {
     populateListView(R.id.resistant_against_card, R.id.card_title, "Strong Against", resistantList)
     populateListView(R.id.very_resistant_against_card, R.id.card_title, "Very Strong Against", vulnerableList)
     populateListView(R.id.immune_against_card, R.id.card_title, "Immune Against", immuneList)
-
-    println(immuneList)
-
   }
 
+  /**
+   * Populates a list view with Pokémon type details.
+   * @param parentViewId The id of the parent view.
+   * @param titleViewId The id of the title view.
+   * @param title The title of the list.
+   * @param list The list of Pokémon types.
+   */
   private fun populateListView(parentViewId: Int, titleViewId: Int, title: String, list: List<String>?) {
     val parent = findViewById<LinearLayout>(parentViewId)
     val titleView = parent.findViewById<TextView>(titleViewId)
@@ -70,7 +84,6 @@ class TypeDetailsActivity : AppCompatActivity() {
       // Set the type color and icon
       val typeData = types.find { it.name == typeName }
       typeData?.let { typeDetails ->
-
         val drawable = GradientDrawable()
         drawable.shape = GradientDrawable.RECTANGLE
         drawable.cornerRadius = 50f

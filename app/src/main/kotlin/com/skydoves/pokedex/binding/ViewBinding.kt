@@ -1,19 +1,3 @@
-/*
- * Designed and developed by 2022 skydoves (Jaewoong Eum)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.skydoves.pokedex.binding
 
 import android.graphics.Color
@@ -43,6 +27,12 @@ import com.skydoves.whatif.whatIfNotNullOrEmpty
 
 object ViewBinding {
 
+  /**
+   * Displays a toast message with the specified text.
+   *
+   * Note: This function is part of the general utility functions.
+   * Coder: Nguyen Dang Khoa (ID: 21110045)
+   */
   @JvmStatic
   @BindingAdapter("toast")
   fun bindToast(view: View, text: String?) {
@@ -51,6 +41,12 @@ object ViewBinding {
     }
   }
 
+  /**
+   * Loads an image from a URL into an AppCompatImageView and sets the background color of a MaterialCardView using Glide's palette.
+   *
+   * Note: This function is part of the Pokedex and view poke detail functionality.
+   * Coder: Nguyen Dang Khoa (ID: 21110045)
+   */
   @JvmStatic
   @BindingAdapter("paletteImage", "paletteCard")
   fun bindLoadImagePalette(view: AppCompatImageView, url: String, paletteCard: MaterialCardView) {
@@ -68,6 +64,13 @@ object ViewBinding {
       ).into(view)
   }
 
+  /**
+   * Loads an image from a URL into an AppCompatImageView and sets the background of a View using Glide's palette.
+   * Adjusts the status bar color if the context is an AppCompatActivity.
+   *
+   * Note: This function is part of the Pokedex and view poke detail functionality.
+   * Coder: Nguyen Dang Khoa (ID: 21110045)
+   */
   @JvmStatic
   @BindingAdapter("paletteImage", "paletteView")
   fun bindLoadImagePaletteView(view: AppCompatImageView, url: String, paletteView: View) {
@@ -100,6 +103,12 @@ object ViewBinding {
       ).into(view)
   }
 
+  /**
+   * Sets the visibility of a View to GONE or VISIBLE based on the shouldBeGone parameter.
+   *
+   * Note: This function is part of the general utility functions.
+   * Coder: Nguyen Dang Khoa (ID: 21110045)
+   */
   @JvmStatic
   @BindingAdapter("gone")
   fun bindGone(view: View, shouldBeGone: Boolean) {
@@ -110,6 +119,12 @@ object ViewBinding {
     }
   }
 
+  /**
+   * Sets up an OnClickListener on a View to handle back press actions if the context is an OnBackPressedDispatcherOwner.
+   *
+   * Note: This function is part of the general utility functions.
+   * Coder: Nguyen Dang Khoa (ID: 21110045)
+   */
   @JvmStatic
   @BindingAdapter("onBackPressed")
   fun bindOnBackPressed(view: View, onBackPress: Boolean) {
@@ -121,6 +136,12 @@ object ViewBinding {
     }
   }
 
+  /**
+   * Binds a list of Pokemon types to a RibbonRecyclerView, displaying each type as a styled ribbon.
+   *
+   * Note: This function is part of the Elements of pokemon functionality.
+   * Coder: Nguyen Dang Khoa (ID: 21110045)
+   */
   @JvmStatic
   @BindingAdapter("bindPokemonTypes")
   fun bindPokemonTypes(recyclerView: RibbonRecyclerView, types: List<PokemonInfo.TypeResponse>?) {
@@ -153,12 +174,24 @@ object ViewBinding {
     }
   }
 
+  /**
+   * Sets the label text of a ProgressView.
+   *
+   * Note: This function is part of the general utility functions.
+   * Coder: Nguyen Dang Khoa (ID: 21110045)
+   */
   @JvmStatic
   @BindingAdapter("progressView_labelText")
   fun bindProgressViewLabelText(progressView: ProgressView, text: String?) {
     progressView.labelText = text
   }
 
+  /**
+   * Sets the progress value of a ProgressView.
+   *
+   * Note: This function is part of the general utility functions.
+   * Coder: Nguyen Dang Khoa (ID: 21110045)
+   */
   @JvmStatic
   @BindingAdapter("progressView_progress")
   fun bindProgressViewProgress(progressView: ProgressView, value: Int?) {
@@ -167,6 +200,12 @@ object ViewBinding {
     }
   }
 
+  /**
+   * Sets the maximum value of a ProgressView.
+   *
+   * Note: This function is part of the general utility functions.
+   * Coder: Nguyen Dang Khoa (ID: 21110045)
+   */
   @JvmStatic
   @BindingAdapter("progressView_max")
   fun bindProgressViewMax(progressView: ProgressView, value: Int?) {

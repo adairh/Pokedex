@@ -15,7 +15,11 @@ import com.skydoves.pokedex.utils.TypesInit.Companion.types
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import org.tensorflow.lite.DataType
-
+/**
+ * Activity for selecting elemental types and viewing their details.
+ * Allows users to select up to 2 elemental types and view details such as strengths and weaknesses.
+ * @coder Nguyen Dang Khoa
+ */
 class ElementActivity : AppCompatActivity() {
 
   private lateinit var recyclerView: RecyclerView
@@ -25,20 +29,23 @@ class ElementActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_element)
 
+    // Initialize tab host
     val tabHost = findViewById<TabHost>(R.id.tabHost)
     TabHostUtils.setupTabHost(this, tabHost, 2)
 
+    // Initialize RecyclerView
     recyclerView = findViewById(R.id.recyclerView)
     setupRecyclerView()
 
+    // Handle button click to view details
     val buttonViewDetail: Button = findViewById(R.id.buttonViewDetail)
     buttonViewDetail.setOnClickListener {
       val selectedElements = adapter.selectedItems
 
       if (selectedElements.size <= 0) {
-        Toast.makeText(this, "You have to select at least 1 items.", Toast.LENGTH_SHORT).show()
-      }
-      else {
+        Toast.makeText(this, "You have to select at least 1 item.", Toast.LENGTH_SHORT).show()
+      } else {
+        // Extract weak, strong, resistant, vulnerable, and immune lists
         val weakList = mutableListOf<String>()
         val strongList = mutableListOf<String>()
         val resistantList = mutableListOf<String>()
@@ -65,30 +72,9 @@ class ElementActivity : AppCompatActivity() {
           for (ie in element.immune) {
             immuneList.add(ie.type.name)
           }
-
-
-          /*println("WEAK")
-        for (we in element.weak)
-          println("Weak: " + we.name)
-
-        println("STRONG")
-        for (se in element.strong)
-          println("Strong: " + se.name)
-
-        println("RESISTANT")
-        for (re in element.resistant)
-          println("Resistant: " + re.type.name)
-
-
-        println("VULNERABLE")
-        for (ve in element.vulnerable)
-          println("Vulnerable: " + ve.type.name)
-
-        println("IMMUNE")
-        for (ve in element.immune)
-          println("Immune: " + ve.type.name)*/
         }
 
+        // Create intent and pass data to TypeDetailsActivity
         val intent = Intent(this@ElementActivity, TypeDetailsActivity::class.java)
         intent.putStringArrayListExtra("weakList", ArrayList(weakList))
         intent.putStringArrayListExtra("strongList", ArrayList(strongList))
@@ -103,19 +89,15 @@ class ElementActivity : AppCompatActivity() {
 
         startActivity(intent)
       }
-
-      //Toast.makeText(this, "Additional operations performed.", Toast.LENGTH_SHORT).show()
     }
-
   }
 
-
+  /**
+   * Initializes the RecyclerView with the ElementAdapter.
+   */
   private fun setupRecyclerView() {
-
-
     adapter = ElementAdapter(types)
     recyclerView.layoutManager = GridLayoutManager(this, 2)
     recyclerView.adapter = adapter
   }
-
 }

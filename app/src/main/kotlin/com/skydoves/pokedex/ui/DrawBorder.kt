@@ -13,6 +13,17 @@ import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
 
+/**
+ * Creates a rounded drawable with the given color resource ID.
+ *
+ * @param context The context.
+ * @param colorResId The color resource ID.
+ * @param isSelected Indicates if the drawable is selected.
+ * @return A rounded GradientDrawable.
+ *
+ * Note: This function is part of the Pokedex and view poke detail functionality.
+ * Coder: Nguyen Dang Khoa (ID: 21110045)
+ */
 fun createRoundedDrawable(context: Context, colorResId: Int, isSelected: Boolean): GradientDrawable {
   val drawable = GradientDrawable()
   drawable.shape = GradientDrawable.RECTANGLE
@@ -24,6 +35,17 @@ fun createRoundedDrawable(context: Context, colorResId: Int, isSelected: Boolean
   return drawable
 }
 
+/**
+ * Animates the flipping of a view from front to back or vice versa.
+ *
+ * @param context The context.
+ * @param front The front view.
+ * @param back The back view.
+ * @param showBack Indicates whether to show the back view.
+ *
+ * Note: This function is part of the Pokedex and view poke detail functionality.
+ * Coder: Nguyen Dang Khoa (ID: 21110045)
+ */
 fun flipView(context: Context, front: View, back: View, showBack: Boolean) {
   val scale = context.resources.displayMetrics.density
   front.cameraDistance = 8000 * scale
@@ -44,6 +66,15 @@ fun flipView(context: Context, front: View, back: View, showBack: Boolean) {
   flipIn.start()
 }
 
+/**
+ * Retrieves the ID of a Pokemon by its name using the PokeAPI.
+ *
+ * @param pokemonName The name of the Pokemon.
+ * @return The ID of the Pokemon, or null if an error occurs.
+ *
+ * Note: This function is part of the Pokedex and view poke detail functionality.
+ * Coder: Nguyen Dang Khoa (ID: 21110045)
+ */
 suspend fun getPokemonId(pokemonName: String): Int? = withContext(Dispatchers.IO) {
   try {
     val url = URL("https://pokeapi.co/api/v2/pokemon/$pokemonName")

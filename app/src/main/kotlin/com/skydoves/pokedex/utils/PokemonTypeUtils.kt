@@ -2,8 +2,21 @@ package com.skydoves.pokedex.utils
 
 import com.skydoves.pokedex.R
 
+/**
+ * Utility class for Pokemon types.
+ * Provides methods to get the color resource ID for a given Pokemon type.
+ */
 object PokemonTypeUtils {
 
+  /**
+   * Gets the color resource ID for a given Pokemon type.
+   *
+   * @param type The Pokemon type.
+   * @return The color resource ID corresponding to the Pokemon type.
+   *
+   * Note: This function is part of the Pokedex and view poke detail functionality.
+   * Coder: Nguyen Dang Khoa (ID: 21110045)
+   */
   fun getTypeColor(type: String): Int {
     return when (type) {
       "fighting" -> R.color.fighting

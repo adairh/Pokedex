@@ -4,12 +4,24 @@ import android.app.Application
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.firestore
-import com.skydoves.pokedex.news.di.appComponent
 import dagger.hilt.android.HiltAndroidApp
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+
+/**
+ * Application class for the Pokedex app.
+ * Responsible for initializing Firebase, configuring Dependency Injection (DI), and initializing Firestore.
+ *
+ * Note: This class is part of the News article from Firebase functionality.
+ * Coder: Lam Nguyen Huy Hoang (ID: 21110028)
+ */
 @HiltAndroidApp
 class PokedexApp : Application() {
+
+  /**
+   * Called when the application is starting.
+   * Responsible for initializing Firebase, configuring DI, and initializing Firestore.
+   */
   override fun onCreate() {
     super.onCreate()
 
@@ -26,6 +38,9 @@ class PokedexApp : Application() {
     initializeFirestore()
   }
 
+  /**
+   * Initializes Firestore to retrieve news articles.
+   */
   private fun initializeFirestore() {
     val db = Firebase.firestore
     db.collection("news")
@@ -40,8 +55,10 @@ class PokedexApp : Application() {
       }
   }
 
+  /**
+   * Configures Dependency Injection using Koin.
+   */
   private fun configureDI() = startKoin {
     androidContext(this@PokedexApp)
-    modules(appComponent)
   }
 }

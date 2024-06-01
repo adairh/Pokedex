@@ -1,19 +1,3 @@
-/*
- * Designed and developed by 2022 skydoves (Jaewoong Eum)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.skydoves.pokedex.ui.details
 
 import androidx.databinding.Bindable
@@ -29,6 +13,12 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
+/**
+*
+* Coders: Nguyen Dang Khoa (ID: 21110045) and Lam Nguyen Huy Hoang (ID: 21110028)
+*
+*
+*/
 
 class DetailViewModel @AssistedInject constructor(
   detailRepository: DetailRepository,
@@ -56,12 +46,22 @@ class DetailViewModel @AssistedInject constructor(
     Timber.d("init DetailViewModel")
   }
 
+  /**
+   * AssistedFactory interface for creating instances of DetailViewModel.
+   */
   @dagger.assisted.AssistedFactory
   interface AssistedFactory {
     fun create(pokemonName: String): DetailViewModel
   }
 
   companion object {
+    /**
+     * Provides a factory to create instances of DetailViewModel.
+     *
+     * @param assistedFactory The assisted factory for creating instances of DetailViewModel.
+     * @param pokemonName The name of the Pokemon for which details are to be displayed.
+     * @return The ViewModelProvider.Factory instance for DetailViewModel.
+     */
     fun provideFactory(
       assistedFactory: AssistedFactory,
       pokemonName: String,
