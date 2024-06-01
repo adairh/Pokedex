@@ -1,4 +1,4 @@
-package com.skydoves.pokedex
+package me.sjihh.pokedex
 
 object Configuration {
   const val majorVersion = 1

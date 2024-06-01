@@ -7,7 +7,7 @@
 
     <variable
       name="pokemon"
-      type="com.skydoves.pokedex.core.model.Pokemon" />
+      type="me.sjihh.pokedex.core.model.Pokemon" />
     
   </data>
 

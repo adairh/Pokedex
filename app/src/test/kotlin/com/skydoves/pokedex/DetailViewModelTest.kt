@@ -1,31 +1,17 @@
-/*
- * Designed and developed by 2022 skydoves (Jaewoong Eum)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
-package com.skydoves.pokedex
+
+package me.sjihh.pokedex
 
 import app.cash.turbine.test
-import com.skydoves.pokedex.core.database.PokemonInfoDao
-import com.skydoves.pokedex.core.database.entitiy.mapper.asEntity
-import com.skydoves.pokedex.core.network.service.PokedexClient
-import com.skydoves.pokedex.core.network.service.PokedexService
-import com.skydoves.pokedex.core.repository.DetailRepository
-import com.skydoves.pokedex.core.repository.DetailRepositoryImpl
-import com.skydoves.pokedex.core.test.MainCoroutinesRule
-import com.skydoves.pokedex.core.test.MockUtil
-import com.skydoves.pokedex.ui.details.DetailViewModel
+import me.sjihh.pokedex.core.database.PokemonInfoDao
+import me.sjihh.pokedex.core.database.entitiy.mapper.asEntity
+import me.sjihh.pokedex.core.network.service.PokedexClient
+import me.sjihh.pokedex.core.network.service.PokedexService
+import me.sjihh.pokedex.core.repository.DetailRepository
+import me.sjihh.pokedex.core.repository.DetailRepositoryImpl
+import me.sjihh.pokedex.core.test.MainCoroutinesRule
+import me.sjihh.pokedex.core.test.MockUtil
+import me.sjihh.pokedex.ui.details.DetailViewModel
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Before

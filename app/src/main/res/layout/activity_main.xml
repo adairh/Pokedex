@@ -6,10 +6,10 @@
   <data>
     <variable
       name="vm"
-      type="com.skydoves.pokedex.ui.main.MainViewModel" />
+      type="me.sjihh.pokedex.ui.main.MainViewModel" />
     <variable
       name="adapter"
-      type="com.skydoves.pokedex.ui.main.PokemonAdapter" />
+      type="me.sjihh.pokedex.ui.main.PokemonAdapter" />
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout
