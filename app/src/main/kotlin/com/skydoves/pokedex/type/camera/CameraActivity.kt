@@ -114,21 +114,155 @@ class CameraActivity : AppCompatActivity() {
         }
       }
       val classes = arrayOf(
-        "Abra", "Aerodactyl", "Alakazam", "Arbok", "Arcanine", "Articuno", "Beedrill", "Bellsprout",
-        "Blastoise", "Bulbasaur", "Butterfree", "Caterpie", "Chansey", "Charizard", "Charmander", "Charmeleon", "Clefable", "Clefairy", "Cloyster", "Cubone", "Dewgong",
-        "Diglett", "Ditto", "Dodrio", "Doduo", "Dragonair", "Dragonite", "Dratini", "Drowzee", "Dugtrio", "Eevee", "Ekans", "Electabuzz",
-        "Electrode", "Exeggcute", "Exeggutor", "Farfetchd", "Fearow", "Flareon", "Gastly", "Gengar", "Geodude", "Gloom",
-        "Golbat", "Goldeen", "Golduck", "Golem", "Graveler", "Grimer", "Growlithe", "Gyarados", "Haunter", "Hitmonchan",
-        "Hitmonlee", "Horsea", "Hypno", "Ivysaur", "Jigglypuff", "Jolteon", "Jynx", "Kabuto",
-        "Kabutops", "Kadabra", "Kakuna", "Kangaskhan", "Kingler", "Koffing", "Krabby", "Lapras", "Lickitung", "Machamp",
-        "Machoke", "Machop", "Magikarp", "Magmar", "Magnemite", "Magneton", "Mankey", "Marowak", "Meowth", "Metapod",
-        "Mew", "Mewtwo", "Moltres", "Mrmime", "Muk", "Nidoking", "Nidoqueen", "Nidorina", "Nidorino", "Ninetales",
-        "Oddish", "Omanyte", "Omastar", "Onix", "Paras", "Parasect", "Persian", "Pidgeot", "Pidgeotto", "Pidgey",
-        "Pikachu", "Pinsir", "Poliwag", "Poliwhirl", "Poliwrath", "Ponyta", "Porygon", "Primeape", "Psyduck", "Raichu",
-        "Rapidash", "Raticate", "Rattata", "Rhydon", "Rhyhorn", "Sandshrew", "Sandslash", "Scyther", "Seadra",
-        "Seaking", "Seel", "Shellder", "Slowbro", "Slowpoke", "Snorlax", "Spearow", "Squirtle", "Starmie", "Staryu",
-        "Tangela", "Tauros", "Tentacool", "Tentacruel", "Vaporeon", "Venomoth", "Venonat", "Venusaur", "Victreebel",
-        "Vileplume", "Voltorb", "Vulpix", "Wartortle", "Weedle", "Weepinbell", "Weezing", "Wigglytuff", "Zapdos", "Zubat"
+        "Abra",
+        "Aerodactyl",
+        "Alakazam",
+        "Arbok",
+        "Arcanine",
+        "Articuno",
+        "Beedrill",
+        "Bellsprout",
+        "Blastoise",
+        "Bulbasaur",
+        "Butterfree",
+        "Caterpie",
+        "Chansey",
+        "Charizard",
+        "Charmander",
+        "Charmeleon",
+        "Clefable",
+        "Clefairy",
+        "Cloyster",
+        "Cubone",
+        "Dewgong",
+        "Diglett",
+        "Ditto",
+        "Dodrio",
+        "Doduo",
+        "Dragonair",
+        "Dragonite",
+        "Dratini",
+        "Drowzee",
+        "Dugtrio",
+        "Eevee",
+        "Ekans",
+        "Electabuzz",
+        "Electrode",
+        "Exeggcute",
+        "Exeggutor",
+        "Farfetchd",
+        "Fearow",
+        "Flareon",
+        "Gastly",
+        "Gengar",
+        "Geodude",
+        "Gloom",
+        "Golbat",
+        "Goldeen",
+        "Golduck",
+        "Golem",
+        "Graveler",
+        "Grimer",
+        "Growlithe",
+        "Gyarados",
+        "Haunter",
+        "Hitmonchan",
+        "Hitmonlee",
+        "Horsea",
+        "Hypno",
+        "Ivysaur",
+        "Jigglypuff",
+        "Jolteon",
+        "Jynx",
+        "Kabuto",
+        "Kabutops",
+        "Kadabra",
+        "Kakuna",
+        "Kangaskhan",
+        "Kingler",
+        "Koffing",
+        "Krabby",
+        "Lapras",
+        "Lickitung",
+        "Machamp",
+        "Machoke",
+        "Machop",
+        "Magikarp",
+        "Magmar",
+        "Magnemite",
+        "Magneton",
+        "Mankey",
+        "Marowak",
+        "Meowth",
+        "Metapod",
+        "Mew",
+        "Mewtwo",
+        "Moltres",
+        "Mrmime",
+        "Muk",
+        "Nidoking",
+        "Nidoqueen",
+        "Nidorina",
+        "Nidorino",
+        "Ninetales",
+        "Oddish",
+        "Omanyte",
+        "Omastar",
+        "Onix",
+        "Paras",
+        "Parasect",
+        "Persian",
+        "Pidgeot",
+        "Pidgeotto",
+        "Pidgey",
+        "Pikachu",
+        "Pinsir",
+        "Poliwag",
+        "Poliwhirl",
+        "Poliwrath",
+        "Ponyta",
+        "Porygon",
+        "Primeape",
+        "Psyduck",
+        "Raichu",
+        "Rapidash",
+        "Raticate",
+        "Rattata",
+        "Rhydon",
+        "Rhyhorn",
+        "Sandshrew",
+        "Sandslash",
+        "Scyther",
+        "Seadra",
+        "Seaking",
+        "Seel",
+        "Shellder",
+        "Slowbro",
+        "Slowpoke",
+        "Snorlax",
+        "Spearow",
+        "Squirtle",
+        "Starmie",
+        "Staryu",
+        "Tangela",
+        "Tauros",
+        "Tentacool",
+        "Tentacruel",
+        "Vaporeon",
+        "Venomoth",
+        "Venonat",
+        "Venusaur",
+        "Victreebel",
+        "Vileplume",
+        "Voltorb",
+        "Vulpix",
+        "Wartortle",
+        "Weedle",
+        "Weepinbell",
+        "Weezing",
+        "Wigglytuff",
+        "Zapdos",
+        "Zubat"
       )
       val r = classes[maxPos];
       val spannableString = SpannableString(r)
@@ -146,7 +280,8 @@ class CameraActivity : AppCompatActivity() {
         model.close()
       } else {
         result!!.text = "Not found"
-        confidence!!.text = "Pokemon cant be determined due to image quality or there is no Pokemon in the image"
+        confidence!!.text =
+          "Pokemon cant be determined due to image quality or there is no Pokemon in the image"
       }
     } catch (e: IOException) {
       // Handle the exception
@@ -172,7 +307,10 @@ class CameraActivity : AppCompatActivity() {
       val lowerName = name.lowercase()
       runBlocking {
         val pokemonId = getPokemonId(lowerName)
-        PKMDActivity.startActivity(this@CameraActivity, Pokemon(0, lowerName, "https://pokeapi.co/api/v2/pokemon/$pokemonId/"))
+        PKMDActivity.startActivity(
+          this@CameraActivity,
+          Pokemon(0, lowerName, "https://pokeapi.co/api/v2/pokemon/$pokemonId/")
+        )
       }
     }
 
@@ -182,7 +320,6 @@ class CameraActivity : AppCompatActivity() {
     }
 
 
-
-
-
   }
+
+}
