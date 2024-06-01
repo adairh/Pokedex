@@ -2,12 +2,14 @@ package me.sjihh.pokedex.news.ui.home
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -35,6 +37,7 @@ class NewsAdapter(
     private val imageView: ImageView = itemView.findViewById(R.id.imageArticleView)
     private val shortContent: TextView = itemView.findViewById(R.id.shortContent)
 
+    @RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("SetTextI18n")
     fun bindView(news: News) {
       titleTextView.text = news.title
