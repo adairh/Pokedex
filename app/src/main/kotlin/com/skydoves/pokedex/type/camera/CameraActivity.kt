@@ -145,6 +145,7 @@ class CameraActivity : AppCompatActivity() {
         // Releases model resources if no longer used.
         model.close()
       } else {
+        result!!.text = "Not found"
         confidence!!.text = "Pokemon cant be determinded due to image quality or there is no Pokemon in the image"
       }
     } catch (e: IOException) {
