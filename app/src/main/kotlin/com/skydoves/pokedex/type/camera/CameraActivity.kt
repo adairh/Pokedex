@@ -49,9 +49,6 @@ class CameraActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_camera)
-
-
-
     val tabHost = findViewById<TabHost>(R.id.tabHost)
     TabHostUtils.setupTabHost(this, tabHost, 1)
 
@@ -76,16 +73,13 @@ class CameraActivity : AppCompatActivity() {
   fun classifyImage(image: Bitmap) {
     try {
       val model = Pokedex91.newInstance(this)
-
       // Creates inputs for reference.
       val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
       val byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3)
       byteBuffer.order(ByteOrder.nativeOrder())
-
       // get 1D array of 224 * 224 pixels in image
       val intValues = IntArray(imageSize * imageSize)
       image.getPixels(intValues, 0, image.width, 0, 0, image.width, image.height)
-
       // iterate over pixels and extract R, G, and B values. Add to bytebuffer.
       var pixel = 0
       for (i in 0 until imageSize) {
@@ -97,13 +91,12 @@ class CameraActivity : AppCompatActivity() {
         }
       }
 
-      inputFeature0.loadBuffer(byteBuffer)
 
+
+      inputFeature0.loadBuffer(byteBuffer)
       // Runs model inference and gets result.
       val outputs = model.process(inputFeature0)
       val outputFeature0 = outputs.outputFeature0AsTensorBuffer
-
-
       val confidences = outputFeature0.floatArray
       // find the index of the class with the biggest confidence.
       var maxPos = 0
@@ -132,26 +125,21 @@ class CameraActivity : AppCompatActivity() {
         "Vileplume", "Voltorb", "Vulpix", "Wartortle", "Weedle", "Weepinbell", "Weezing", "Wigglytuff", "Zapdos", "Zubat"
       )
       //result!!.text = classes[maxPos]
-
       val r = classes[maxPos];
-
       val spannableString = SpannableString(r)
       val clickableSpan = ConfidenceClickableSpan(r)
       spannableString.setSpan(clickableSpan, 0, r.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
       result!!.movementMethod = LinkMovementMethod.getInstance()
       result!!.text = spannableString
 
+
+
       var s = ""
       var i = maxPos
       //for (i in classes.indices) {
         s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100)
       //}
-
-
-
         confidence!!.text = s
-
-
       // Releases model resources if no longer used.
       model.close()
     } catch (e: IOException) {
@@ -167,30 +155,23 @@ class CameraActivity : AppCompatActivity() {
         min(image!!.width.toDouble(), image!!.height.toDouble()).toInt()
       image = ThumbnailUtils.extractThumbnail(image, dimension, dimension)
       imageView!!.setImageBitmap(image)
-
       image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false)
       classifyImage(image)
     }
     super.onActivityResult(requestCode, resultCode, data)
   }
+
+
   private inner class ConfidenceClickableSpan(private val name: String) : ClickableSpan() {
     override fun onClick(widget: View) {
-
-
       println("CameraActivity $name")
-
-      //BindingHolder.holder?.let { DetailActivity.startActivity(it.transformationLayout, Pokemon(7, "mewtwo", "https://pokeapi.co/api/v2/pokemon/150/")) }
-      val lowerName = name.lowercase()
-
+       val lowerName = name.lowercase()
       runBlocking {
-
         val pokemonId = getPokemonId(lowerName)
         println("Pokemon ID: $pokemonId") // Output: Pokemon ID: 150
-
         //PKMDActivity.startActivity(this@CameraActivity, Pokemon(0, lowerName, "https://pokeapi.co/api/v2/pokemon/$lowerName/"))
         PKMDActivity.startActivity(this@CameraActivity, Pokemon(0, lowerName, "https://pokeapi.co/api/v2/pokemon/$pokemonId/"))
         //this@CameraActivity.startActivity(Intent(this@CameraActivity, DetailActivity::class.java))
-
       }
     }
 

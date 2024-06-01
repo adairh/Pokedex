@@ -18,28 +18,23 @@ data class ElementData(
     val strong = types.asList() + strong
     return ElementData(iconResId, name, backgroundColorResId, strong, weak, resistant, vulnerable, immune)
   }
-
   fun weakAgainst(vararg types: ElementData): ElementData {
     val weak = types.asList() + weak
     return ElementData(iconResId, name, backgroundColorResId, strong, weak, resistant, vulnerable, immune)
   }
-
   fun resistantTo(vararg types: ElementData): ElementData {
     val resistant = (types.asTypeEffectivenessList() + resistant).sortedBy { (type) -> type }
     return ElementData(iconResId, name, backgroundColorResId, strong, weak, resistant, vulnerable, immune)
   }
-
   fun vulnerableTo(vararg types: ElementData): ElementData {
     val vulnerable = (types.asTypeEffectivenessList() + vulnerable).sortedBy { (type) -> type }
     return ElementData(iconResId, name, backgroundColorResId, strong, weak, resistant, vulnerable, immune)
   }
-
   fun immuneTo(vararg types: ElementData): ElementData {
     val immune = (types.asTypeEffectivenessList(multiplier = 2) + immune)
       .sortedBy { (type) -> type }
     return ElementData(iconResId, name, backgroundColorResId, strong, weak, resistant, vulnerable, immune)
   }
-
   operator fun plus(other: ElementData): ResultType {
     return ResultType(
       types = listOf(this, other),
@@ -55,7 +50,6 @@ data class ElementData(
       ).sortedBy { (type) -> type }
     )
   }
-
   fun asResultType(): ResultType {
     return ResultType(
       types = listOf(this),
@@ -65,9 +59,7 @@ data class ElementData(
       weak = weak.asTypeEffectivenessList()
     )
   }
-
   override fun compareTo(other: ElementData): Int {
     return name.compareTo(other.name)
   }
-
 }

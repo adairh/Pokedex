@@ -28,6 +28,7 @@ class TypeDetailsActivity : AppCompatActivity() {
     strongList = intent.getStringArrayListExtra("strongList")
     resistantList = intent.getStringArrayListExtra("resistantList")
     vulnerableList = intent.getStringArrayListExtra("vulnerableList")
+    immuneList = intent.getStringArrayListExtra("immuneList")
     typess = intent.getStringArrayListExtra("Type")
 
     // Populate the views with the data
@@ -46,9 +47,11 @@ class TypeDetailsActivity : AppCompatActivity() {
     // Populate the list views
     populateListView(R.id.very_weak_against_card, R.id.card_title, "Very Weak Against", weakList)
     populateListView(R.id.weak_against_card, R.id.card_title, "Weak Against", strongList)
-    populateListView(R.id.resistant_against_card, R.id.card_title, "Resistant Against", resistantList)
-    populateListView(R.id.very_resistant_against_card, R.id.card_title, "Very Resistant Against", vulnerableList)
+    populateListView(R.id.resistant_against_card, R.id.card_title, "Strong Against", resistantList)
+    populateListView(R.id.very_resistant_against_card, R.id.card_title, "Very Strong Against", vulnerableList)
     populateListView(R.id.immune_against_card, R.id.card_title, "Immune Against", immuneList)
+
+    println(immuneList)
 
   }
 
