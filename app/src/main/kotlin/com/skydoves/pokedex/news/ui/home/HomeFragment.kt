@@ -17,14 +17,25 @@ import com.skydoves.pokedex.news.repository.SharedViewModel
 import com.skydoves.pokedex.news.utils.PokemonColorUtil
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
+/**
+ * [HomeFragment] displays a list of news articles and provides a search functionality
+ * to filter the articles based on user input.
+ */
 class HomeFragment : Fragment() {
 
+  // ViewModels for managing data and communication between components
   private val homeViewModel: HomeViewModel by viewModel()
   private val sharedViewModel: SharedViewModel by sharedViewModel()
+
+  // ViewBinding for accessing UI elements
   private var viewBinding: FragmentHomeBinding? = null
+
+  // EditText for search input
   private lateinit var searchEditText: EditText
 
+  /**
+   * Creates and returns the view hierarchy associated with the fragment.
+   */
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
@@ -32,6 +43,7 @@ class HomeFragment : Fragment() {
   ): View? {
     val view = inflater.inflate(R.layout.fragment_home, container, false)
 
+    // Initialize the search EditText and add a TextWatcher for filtering news
     searchEditText = view.findViewById(R.id.searchEditText)
     searchEditText.addTextChangedListener(object : TextWatcher {
       override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -47,12 +59,18 @@ class HomeFragment : Fragment() {
     return view
   }
 
+  /**
+   * Initializes the UI components and observes LiveData to update the UI.
+   */
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
+
+    // Set the status bar color based on a predefined color resource
     activity?.window?.statusBarColor = PokemonColorUtil(view.context).convertColor(R.color.red)
 
     viewBinding = FragmentHomeBinding.bind(view)
 
+    // Set up RecyclerView with LinearLayoutManager and DividerItemDecoration
     viewBinding?.recyclerViewNews?.layoutManager = LinearLayoutManager(context)
     viewBinding?.recyclerViewNews?.addItemDecoration(
       DividerItemDecoration(
@@ -61,11 +79,15 @@ class HomeFragment : Fragment() {
       )
     )
 
+    // Observe the list of news articles and update the RecyclerView adapter
     homeViewModel.getListNews().observe(viewLifecycleOwner, Observer { newsList ->
       viewBinding?.recyclerViewNews?.adapter = NewsAdapter(newsList, view.context, sharedViewModel)
     })
   }
 
+  /**
+   * Cleans up references to the viewBinding when the fragment's view is destroyed.
+   */
   override fun onDestroyView() {
     viewBinding = null
     super.onDestroyView()

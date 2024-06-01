@@ -1,10 +1,12 @@
 package com.skydoves.pokedex.news.ui.newsdetail
 
+import android.os.Build
 import android.os.Bundle
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
@@ -15,6 +17,9 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+/**
+ * Lam Nguyen Huy Hoang
+ */
 class NewsDetailFragment : Fragment() {
 
   private val sharedViewModel: SharedViewModel by sharedViewModel()
@@ -30,6 +35,7 @@ class NewsDetailFragment : Fragment() {
     return view
   }
 
+  @RequiresApi(Build.VERSION_CODES.N)
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
@@ -38,7 +44,7 @@ class NewsDetailFragment : Fragment() {
       viewBinding?.apply {
         txtNewsTitle.text = news.title
         newsDate.text = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(news.date.toDate())
-        newsContent.text = Html.fromHtml(news.content).toString()
+        newsContent.text = Html.fromHtml(news.content, Html.FROM_HTML_MODE_LEGACY).toString()
 
 
         Glide.with(this@NewsDetailFragment)

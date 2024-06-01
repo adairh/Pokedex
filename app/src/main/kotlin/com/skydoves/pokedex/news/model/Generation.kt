@@ -3,6 +3,12 @@ package com.skydoves.pokedex.news.model
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
+/**
+ *
+ * Lam Nguyen Huy Hoang
+ * Generation Items
+ */
+
 class Generation(
     val id: Int,
     @StringRes val title: Int,

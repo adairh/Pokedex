@@ -4,6 +4,12 @@ import android.os.Parcelable
 import com.google.firebase.Timestamp
 import kotlinx.android.parcel.Parcelize
 
+/**
+ *
+ * Lam Nguyen Huy Hoang
+ * News Items
+ */
+
 @Parcelize
 data class News(
   val id: String = "",

@@ -17,10 +17,16 @@ import com.skydoves.pokedex.news.repository.SharedViewModel
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+/**
+ *
+ * Lam Nguyen Huy Hoang
+ *
+ */
+
 class NewsAdapter(
   var newsList: List<News>,
   private val context: Context,
-  private val sharedViewModel: SharedViewModel // Add this parameter
+  private val sharedViewModel: SharedViewModel
 ) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
   inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -29,7 +35,7 @@ class NewsAdapter(
     private val imageView: ImageView = itemView.findViewById(R.id.imageArticleView)
     private val shortContent: TextView = itemView.findViewById(R.id.shortContent)
 
-    @SuppressLint("SuspiciousIndentation")
+    @SuppressLint("SetTextI18n")
     fun bindView(news: News) {
       titleTextView.text = news.title
 
@@ -43,7 +49,7 @@ class NewsAdapter(
         .load(news.thumbNail)
         .into(imageView)
 
-      val text = Html.fromHtml(news.content).toString()
+      val text = Html.fromHtml(news.content, Html.FROM_HTML_MODE_LEGACY).toString()
       val maxWordCount = 30
       val words = text.split(" ")
       val shortContentText = if (words.size <= maxWordCount) {

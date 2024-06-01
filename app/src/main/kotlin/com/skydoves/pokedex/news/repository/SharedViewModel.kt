@@ -5,6 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.skydoves.pokedex.news.model.News
 
+/**
+ *
+ * Lam Nguyen Huy Hoang
+ */
+
+
 class SharedViewModel : ViewModel() {
     val selectedNews = MutableLiveData<News>()
 

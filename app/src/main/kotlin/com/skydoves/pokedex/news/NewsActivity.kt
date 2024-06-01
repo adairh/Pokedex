@@ -12,10 +12,14 @@ import com.skydoves.pokedex.news.repository.SharedViewModel
 import com.skydoves.pokedex.news.ui.home.NewsAdapter
 import com.skydoves.pokedex.utils.TabHostUtils
 
+/**
+ * Activity for displaying news articles.
+ * Lam Nguyen Huy Hoang
+ */
 class NewsActivity : AppCompatActivity() {
   private val newsRepository = NewsRepository()
   private lateinit var newsAdapter: NewsAdapter
-  private val sharedViewModel: SharedViewModel by viewModels() // Use viewModels() to create the ViewModel
+  private val sharedViewModel: SharedViewModel by viewModels()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -27,16 +31,14 @@ class NewsActivity : AppCompatActivity() {
     val recyclerView: RecyclerView = findViewById(R.id.recyclerViewNews)
     recyclerView.layoutManager = LinearLayoutManager(this)
 
-    // Initialize newsAdapter here
-    newsAdapter = NewsAdapter(emptyList(), this, sharedViewModel) // Pass the sharedViewModel
-
+    newsAdapter = NewsAdapter(emptyList(), this, sharedViewModel)
     recyclerView.adapter = newsAdapter
 
     newsRepository.getNews { newsList ->
-      // Now that newsAdapter is initialized, update its data
-      newsAdapter.newsList = newsList
-      newsAdapter.notifyDataSetChanged()
+      runOnUiThread {
+        newsAdapter.newsList = newsList
+        newsAdapter.notifyDataSetChanged()
+      }
     }
-
   }
 }

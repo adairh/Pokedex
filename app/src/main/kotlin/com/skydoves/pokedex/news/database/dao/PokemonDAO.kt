@@ -7,7 +7,10 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.skydoves.pokedex.news.model.Pokemon
-
+/**
+ *
+ * Lam Nguyen Huy Hoang
+ */
 @Dao
 interface PokemonDAO {
 

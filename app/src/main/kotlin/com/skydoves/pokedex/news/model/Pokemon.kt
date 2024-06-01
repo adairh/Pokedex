@@ -6,6 +6,13 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.skydoves.pokedex.news.utils.ListStringConverter
 
+/**
+ *
+ * Lam Nguyen Huy Hoang
+ * Pokemon Items
+ */
+
+
 @Entity
 @TypeConverters(ListStringConverter::class)
 data class Pokemon(

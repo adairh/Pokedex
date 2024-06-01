@@ -6,6 +6,13 @@ import com.skydoves.pokedex.news.model.News
 import com.skydoves.pokedex.news.utils.TimestampDeserializer
 import java.security.Timestamp
 
+/**
+ *
+ * Lam Nguyen Huy Hoang
+ * Fetching data form the FireStore
+ */
+
+
 class NewsRepository {
   private val db = FirebaseFirestore.getInstance()
   private val gson = GsonBuilder().registerTypeAdapter(Timestamp::class.java, TimestampDeserializer()).create()

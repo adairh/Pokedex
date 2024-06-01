@@ -37,40 +37,48 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import kotlin.math.min
 
-
+/**
+ * Activity for handling camera functionalities including image capturing and classification.
+ * Lam Nguyen Huy Hoang 21110028
+ */
 class CameraActivity : AppCompatActivity() {
 
-  var result: TextView? = null
-  var confidence: TextView? = null
-  var imageView: ImageView? = null
-  var picture: Button? = null
-  var imageSize: Int = 224
+  // Initialize views and variables
+  private var result: TextView? = null
+  private var confidence: TextView? = null
+  private var imageView: ImageView? = null
+  private var picture: Button? = null
+  private var imageSize: Int = 224
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_camera)
+
+    // Set up tab host
     val tabHost = findViewById<TabHost>(R.id.tabHost)
     TabHostUtils.setupTabHost(this, tabHost, 1)
 
+    // Initialize views
     result = findViewById<TextView>(R.id.resultText)
     confidence = findViewById<TextView>(R.id.confidenceText)
     imageView = findViewById<ImageView>(R.id.imageView)
     picture = findViewById<Button>(R.id.takePictureButton)
 
-    picture?.setOnClickListener(View.OnClickListener {
+    // Set up click listener for picture button
+    picture?.setOnClickListener {
       // Launch camera if we have permission
       if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(cameraIntent, 1)
       } else {
-        //Request camera permission if we don't have it.
+        // Request camera permission if we don't have it.
         requestPermissions(arrayOf(Manifest.permission.CAMERA), 100)
       }
-    })
+    }
   }
 
-
-  fun classifyImage(image: Bitmap) {
+  // Function to classify the image
+  private fun classifyImage(image: Bitmap) {
     try {
       val model = Pokedex91.newInstance(this)
       // Creates inputs for reference.
@@ -90,8 +98,6 @@ class CameraActivity : AppCompatActivity() {
           byteBuffer.putFloat((`val` and 0xFF) * (1f / 255f))
         }
       }
-
-
 
       inputFeature0.loadBuffer(byteBuffer)
       // Runs model inference and gets result.
@@ -124,41 +130,34 @@ class CameraActivity : AppCompatActivity() {
         "Tangela", "Tauros", "Tentacool", "Tentacruel", "Vaporeon", "Venomoth", "Venonat", "Venusaur", "Victreebel",
         "Vileplume", "Voltorb", "Vulpix", "Wartortle", "Weedle", "Weepinbell", "Weezing", "Wigglytuff", "Zapdos", "Zubat"
       )
-      //result!!.text = classes[maxPos]
       val r = classes[maxPos];
       val spannableString = SpannableString(r)
       val clickableSpan = ConfidenceClickableSpan(r)
-
       var s = ""
       var i = maxPos
       s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100)
 
-      if (confidences[i]*100 > 80) {
-
+      if (confidences[i] * 100 > 80) {
         spannableString.setSpan(clickableSpan, 0, r.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         result!!.movementMethod = LinkMovementMethod.getInstance()
         result!!.text = spannableString
-
-
-
         confidence!!.text = s
         // Releases model resources if no longer used.
         model.close()
       } else {
         result!!.text = "Not found"
-        confidence!!.text = "Pokemon cant be determinded due to image quality or there is no Pokemon in the image"
+        confidence!!.text = "Pokemon cant be determined due to image quality or there is no Pokemon in the image"
       }
     } catch (e: IOException) {
-      // TODO Handle the exception
+      // Handle the exception
     }
   }
 
-
-  public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+  // Handle camera activity result
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     if (requestCode == 1 && resultCode == RESULT_OK) {
-      var image = data!!.extras!!["data"] as Bitmap?
-      val dimension =
-        min(image!!.width.toDouble(), image!!.height.toDouble()).toInt()
+      var image = data?.extras?.get("data") as Bitmap?
+      val dimension = min(image!!.width.toDouble(), image.height.toDouble()).toInt()
       image = ThumbnailUtils.extractThumbnail(image, dimension, dimension)
       imageView!!.setImageBitmap(image)
       image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false)
@@ -167,30 +166,23 @@ class CameraActivity : AppCompatActivity() {
     super.onActivityResult(requestCode, resultCode, data)
   }
 
-
+  // Inner class for clickable span in text view
   private inner class ConfidenceClickableSpan(private val name: String) : ClickableSpan() {
     override fun onClick(widget: View) {
-      println("CameraActivity $name")
-       val lowerName = name.lowercase()
+      val lowerName = name.lowercase()
       runBlocking {
         val pokemonId = getPokemonId(lowerName)
-        println("Pokemon ID: $pokemonId") // Output: Pokemon ID: 150
-        //PKMDActivity.startActivity(this@CameraActivity, Pokemon(0, lowerName, "https://pokeapi.co/api/v2/pokemon/$lowerName/"))
         PKMDActivity.startActivity(this@CameraActivity, Pokemon(0, lowerName, "https://pokeapi.co/api/v2/pokemon/$pokemonId/"))
-        //this@CameraActivity.startActivity(Intent(this@CameraActivity, DetailActivity::class.java))
       }
     }
-
-
-
 
     override fun updateDrawState(ds: TextPaint) {
       super.updateDrawState(ds)
       ds.isUnderlineText = true // Underline the text
     }
+
+
+
+
+
   }
-
-
-
-
-}
