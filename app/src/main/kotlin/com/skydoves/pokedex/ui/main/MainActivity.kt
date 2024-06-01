@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.TabHost
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.VisibleForTesting
 import com.skydoves.bindables.BindingActivity
@@ -110,6 +111,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
           }
 
         } else {
+          Toast.makeText(this, "This pokemon is not exist", Toast.LENGTH_SHORT).show()
           println("MainActivity No match found for: $searchText")
         }
         true

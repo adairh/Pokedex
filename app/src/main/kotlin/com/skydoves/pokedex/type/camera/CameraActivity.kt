@@ -128,20 +128,25 @@ class CameraActivity : AppCompatActivity() {
       val r = classes[maxPos];
       val spannableString = SpannableString(r)
       val clickableSpan = ConfidenceClickableSpan(r)
-      spannableString.setSpan(clickableSpan, 0, r.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-      result!!.movementMethod = LinkMovementMethod.getInstance()
-      result!!.text = spannableString
-
-
 
       var s = ""
       var i = maxPos
-      //for (i in classes.indices) {
-        s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100)
-      //}
+      s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100)
+
+      if (confidences[i]*100 > 80) {
+
+        spannableString.setSpan(clickableSpan, 0, r.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        result!!.movementMethod = LinkMovementMethod.getInstance()
+        result!!.text = spannableString
+
+
+
         confidence!!.text = s
-      // Releases model resources if no longer used.
-      model.close()
+        // Releases model resources if no longer used.
+        model.close()
+      } else {
+        confidence!!.text = "Pokemon cant be determinded due to image quality or there is no Pokemon in the image"
+      }
     } catch (e: IOException) {
       // TODO Handle the exception
     }
